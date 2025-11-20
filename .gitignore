@@ -1,0 +1,16 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Diretórios de build
+bin/
+target/
+
+# Arquivos temporários e logs
+*.log
+*.tmp
+
+# Arquivos do sistema operacional
+.DS_Store        # macOS
+Thumbs.db        # Windows
