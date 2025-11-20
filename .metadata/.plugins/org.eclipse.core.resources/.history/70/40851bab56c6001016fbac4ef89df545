@@ -1,0 +1,57 @@
+// Descrição do exercício.
+
+/* Fazer um programa para ler um conjunto de nomes de pessoas e suas respectivas idades. Os nomes
+devem ser armazenados em um vetor, e as idades em um outro vetor. Depois, mostrar na tela o nome
+da pessoa mais velha. */
+
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+import entities.Pessoa;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US); // Permite uso de ponto como separador decimal.
+		Scanner sc = new Scanner(System.in);
+		
+		List<Pessoa> list = new ArrayList<>();
+		
+		int qtdPessoa = 0;
+		
+		// Valida entrada numérica;
+		do {
+			System.out.print("Quantas pessoas você vai digitar? ");
+			qtdPessoa = sc.nextInt();
+			sc.nextLine(); // Consome quebra de linha.
+			if(qtdPessoa <=0) {
+				System.out.printf("Valor inválido!%nDigite um valor inteiro maior que zero.%n");
+			}
+		} while(qtdPessoa <=0);
+		System.out.println();
+		
+		// Captura e registro de dados.
+		for(int i= 0; i<qtdPessoa; i++) {
+			System.out.printf("Dados da %dª pessoa:%n", i+1);
+			System.out.print("Nome: ");
+			String nome = sc.nextLine();
+			System.out.print("Idade: ");
+			int idade = sc.nextInt();
+			sc.nextLine(); // Consome quebra de linha.
+			
+			list.add(new Pessoa(nome,idade)); // Registra os valores na lista.
+		}
+		
+		
+		
+		
+		
+		sc.close();
+	}
+
+}

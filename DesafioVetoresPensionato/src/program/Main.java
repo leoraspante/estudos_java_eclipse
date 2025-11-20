@@ -1,0 +1,86 @@
+// Descrição do exercício.
+
+/* A dona de um pensionato possui dez quartos para alugar para estudantes, sendo esses quartos identificados pelos números 0 a 9.
+Fazer um programa que inicie com todos os dez quartos vazios, e depois leia uma quantidade N representando o número de estudantes que vão alugar quartos (N pode ser de 1 a 10).
+Em seguida, registre o aluguel dos N estudantes. Para cada registro de aluguel, informar o nome e email do estudante, bem como qual dos quartos ele escolheu (de 0 a 9). 
+Suponha que seja escolhido um quarto vago. Ao final, seu programa deve imprimir um relatório de todas ocupações do pensionato, por ordem de quarto, conforme exemplo. */
+
+package program;
+
+// Importação de classes.
+import java.util.Locale;
+import java.util.Scanner;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// Alteração do local para US, permitindo o uso de ponto como separador decimal.
+		Locale.setDefault(Locale.US);
+		
+		// Atribuição do Scanner na variável input.
+		Scanner input = new Scanner(System.in);
+		
+		// Definição da variável lotacao, determina o nº de quartos disponíveis.
+		int lotacao = 10;
+		
+		// Definição de variável armazenando a quantidade de quartos.
+		int qtdQuartos = 0;
+		
+		// Checagem inicial garantindo a entrada válida de dados.
+		do {
+			System.out.print("Quantos quartos serão alugados? ");
+			qtdQuartos = input.nextInt();
+			if(qtdQuartos <= 0 || qtdQuartos > lotacao) {
+				System.out.println("Valor inválido!");
+				System.out.println("Digite um número positivo maior que zero, e menor que 11.");
+			}
+		} while(qtdQuartos <= 0 || qtdQuartos > lotacao);
+		
+		
+		// Criação de vetores para o armazenamento de nome, email e quarto.
+		String[] vectNome = new String[lotacao]; // Armazena o nome de quem aluga.
+		String[] vectMail = new String[lotacao]; // Armazena o email de quem aluga.
+		int[] vectQuarto = new int[lotacao]; // Armazena o número do quarto alugado.
+		
+		System.out.println(); // Quebra de linha.
+		
+		// Captura e armazenamento dos dados.
+		for(int i = 0; i < qtdQuartos; i++) {
+			// Bloco responsável pela coleta dos dados informados pelo usuário.
+			System.out.printf("Aluguel nº %d:%n", i+1);
+			input.nextLine();
+			System.out.print("Nome: ");
+			String tempNome = input.nextLine(); // Captura e armazena o nome temporariamente.
+			System.out.print("Email: ");
+			String tempMail = input.nextLine(); // Captura e armazena o email temporariamente.
+			System.out.print("Quarto: ");
+			int index = input.nextInt(); // Captura e armazena o nº do quarto temporariamente.
+			
+			System.out.println(); // Quebra de linha.
+			
+			// Bloco responsável pelo registro em definitivo no vetor, tendo como parâmetro "index" nº do quarto.
+			vectNome[index] = tempNome;
+			vectMail[index] = tempMail;
+			vectQuarto[index] = index;
+		}
+				
+		// Exibição de quartos ocupados.
+		System.out.println("Quartos ocupados:");
+		
+		// Loop for atualizando a posição dos dados no vetor.
+		for(int i = 0; i < lotacao; i++) {
+			if(vectNome[i] != null) {
+				System.out.printf("%d: %s, %s%n", vectQuarto[i], vectNome[i], vectMail[i]);
+			}
+		}
+		
+		
+		// Fechamento do Scanner.
+		input.close();
+		
+
+	}
+
+}

@@ -1,0 +1,90 @@
+// Descrição do exercício.
+
+/* Fazer um programa para ler um vetor de N números inteiros. Em seguida, mostrar na tela a média
+aritmética somente dos números pares lidos, com uma casa decimal. Se nenhum número par for
+digitado, mostrar a mensagem "NENHUM NUMERO PAR" */
+
+// Exercício modificado para fazer uso de práticas de OO e ArrayList.
+
+package application;
+
+// Importações
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+import entities.Number;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		// Alteração do local para US, permitindo o uso de ponto como separador decimal.
+		Locale.setDefault(Locale.US);
+		
+		// Definição do Scanner na variável input.
+		Scanner input = new Scanner(System.in);
+		
+		// Declaração de variável armazenando a quantidade de valores.
+		int qtdValores = 0;
+		
+		// Checagem inicial garantindo a entrada correta de valores.
+		do {
+			System.out.print("Quantos números você vai digitar? ");
+			qtdValores = input.nextInt();
+			if(qtdValores <= 0) {
+				System.out.println("Valor inválido!");
+				System.out.println("Digite um valor inteiro positivo e maior que zero.");
+			}
+		} while(qtdValores <= 0);
+		
+		System.out.println(); // Imprime uma quebra de linha melhorando a legibilidade.
+		
+		// Criação da lista de objetos da classe entities.Number.
+		List<Number> list = new ArrayList<>();
+		
+		// Captura e armazenamento dos valores na lista.
+		for(int i=0; i<qtdValores; i++) {
+			System.out.printf("Informe o %dº número: ", i+1);
+			list.add(new Number(input.nextDouble())); // Armazena o número como sendo um novo objeto do tipo Number na lista.
+		}
+		
+		System.out.println(); // Imprime uma quebra de linha melhorando a legibilidade.
+		
+		// Bloco responsável pelo tratamento dos valores par.
+		// Criação de variável armazenando os valores par.
+		double somaPar = 0.0;
+		
+		// Criação de uma variável para "contar" a quantidade de valores par.
+		int qtdPar = 0;
+		
+		// Criação de uma variável booleana para controlar a exibição dos valores par.
+		boolean isPar = false;
+		
+		// Loop for each percorrendo a lista.
+		for(Number obj : list) {
+			if(obj.getNumber() % 2 == 0) { // Condicional if para encontrar os valores par.
+				somaPar += obj.getNumber(); // Soma todos os valores par na variável somaPar.
+				qtdPar ++; // Conta quantos valores par foram encontrados.
+				isPar = true;
+			}
+		}
+		
+		// Criação de variável para armazenar a média.
+		double media = somaPar/qtdPar;
+		
+		// Exibição do resultado.
+		if(isPar == true) {
+			System.out.printf("Média dos pares: %.1f%n", media);
+		}
+		else {
+			System.out.println("Nenhum número par.");
+		}
+		
+		// Fechamento do Scanner.
+		input.close();
+
+	}
+
+}

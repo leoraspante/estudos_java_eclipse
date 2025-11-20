@@ -1,0 +1,67 @@
+// Descrição do exercício.
+
+/* Fazer um programa para ler um conjunto de N nomes de alunos, bem como as notas que eles tiraram
+no 1o e 2o semestres. Cada uma dessas informações deve ser armazenada em um vetor. Depois, imprimir
+os nomes dos alunos aprovados, considerando aprovados aqueles cuja média das notas seja maior ou
+igual a 6.0 (seis). */
+
+
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+import entities.Aluno;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US); // Usa ponto como separador decimal.
+		Scanner sc = new Scanner(System.in);
+		
+		List<Aluno> list = new ArrayList<>();
+		
+		int qtdAlunos = 0;
+		
+		// Valida entrada numérica.
+		do {
+			System.out.print("Quantos alunos serão digitados? ");
+			qtdAlunos = sc.nextInt();
+			sc.nextLine(); // Consome quebra de linha.
+			if(qtdAlunos <=0) {
+				System.out.printf("Valor inválido!%nDigite um valor inteiro maior que zero.%n");
+			}
+		} while(qtdAlunos <=0);
+		System.out.println();
+		
+		// Captura e registro dos dados.
+		for(int i=0; i<qtdAlunos; i++) {
+			System.out.printf("Dados do %dº aluno:%n", i+1);
+			System.out.print("Nome: ");
+			String nome = sc.nextLine();
+			System.out.print("Nota 1: ");
+			double nota1 = sc.nextDouble();
+			System.out.print("Nota 2: ");
+			double nota2 = sc.nextDouble();
+			sc.nextLine(); // Consome quebra de linha.
+			
+			list.add(new Aluno(nome, nota1, nota2)); // Registra os dados na lista.
+			System.out.println();
+		}
+		System.out.println();
+		
+		// Obtenção dos alunos aprovados.
+		System.out.println("Alunos aprovados:");
+		for(Aluno obj : list) {
+			if(obj.getNota1()+obj.getNota2() >= 6) {
+				System.out.println(obj.getNome());
+			}
+		}
+		
+		sc.close();
+	}
+
+}

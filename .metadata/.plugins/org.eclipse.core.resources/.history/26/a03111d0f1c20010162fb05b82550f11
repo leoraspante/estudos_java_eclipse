@@ -1,0 +1,66 @@
+// Descrição do exercício.
+
+// Atividade voltada a prática do uso de Switch Case, visto no youtube Bro Code.
+
+package application;
+
+// Importações.
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US); // Alteração do local para US, permitindo o uso de ponto como separador decimal.
+		
+		Scanner sc = new Scanner(System.in); // Definição do Scanner na variável sc.
+		
+		System.out.println("Calculadora básica"); // Mensagem de apresentação.
+		System.out.println(); // Quebra de linha para melhor legibilidade.
+		
+		// Declaração de variáveis.
+		double num1, num2, result = 0.0;
+		char operator;
+		boolean validOperation = true;
+		
+		// Coleta de dados.
+		System.out.print("Informe o primeiro valor: ");
+		num1 = sc.nextDouble();
+		
+		System.out.println("Informe o operador: (+) (-) (*) (/) (^)");
+		operator = sc.next().charAt(0);
+		
+		System.out.print("Informe o segundo valor: ");
+		num2 = sc.nextDouble();
+		
+		// Implementação do switch case.
+		switch(operator) {
+		case '+' -> result = num1 + num2;
+		case '-' -> result = num1 - num2;
+		case '*' -> result = num1 * num2;
+		case '^' -> result = Math.pow(num1, num2);
+		case '/' ->{
+			if(num2 == 0) {
+				System.out.println("Não é possível dividir por zero.");
+				validOperation = false;
+			}
+			else {
+				result = num1 / num2;
+			}
+		}
+		default -> {
+			System.out.println("Operador inválido.");
+			validOperation = false;
+		}
+		}
+		
+		if(validOperation) {
+			System.out.println(result);
+		}
+		
+		sc.close(); // Fechamento do Scanner.
+
+	}
+
+}

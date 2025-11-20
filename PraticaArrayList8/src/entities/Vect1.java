@@ -1,0 +1,18 @@
+package entities;
+
+public class Vect1 {
+	
+	private double number;
+	
+	public Vect1(double number) {
+		this.number = number;
+	}
+	
+	public double getNumber1() {
+		return number;
+	}
+	
+	public String toString() {
+		return "" + number;
+	}
+}

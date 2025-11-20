@@ -1,0 +1,143 @@
+// Descrição dos códigos.
+/* O conjunto de códigos a seguir, tem por objetivo realizar a prática de ArrayList */
+
+package program;
+
+// Importação de classes.
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// Criação de uma lsita, que armazena Strings
+		List<String> list = new ArrayList<>();
+		
+		// Adicionando elementos a lista. Lembrando que o elemento deve ser compatível com a lista, neste caso String.
+		list.add("Maria");
+		list.add("Alex");
+		list.add("Bob");
+		list.add("Anna");
+		list.add("Luigi");
+		list.add("Geralt");
+		list.add("Yoshi");
+		list.add("Linus");
+		list.add("Albert");
+		list.add("Alfred");
+		
+		// Percorrento a lista com um "for each".
+		System.out.println("Primeira exibição: Lista padrão.");
+		System.out.println(); // Quebra de linha
+		
+		for(String obj : list) {
+			System.out.println("Nomes cadastrados: " + obj); // Exibição dos elementos.
+		}
+		
+		System.out.println("----------------------------------------------------------------------------"); // Separador. Apenas para fins visuais.
+		
+		// Adicionando elementos em uma determinada posição X na lista.
+		list.add(2, "Marco"); // Adicionado o elemento "Marco" na posição 2 da lista, logo entre "Alex" e "Bob".
+		
+		// Percorrendo a lista com um "for each".
+		System.out.println("Segunda exibição: Com adição do elemento Marco.");
+		System.out.println(); // Quebra de linha.
+		
+		for(String obj : list) {
+			System.out.println("Nomes cadastrados: " + obj); // Exibição dos elementos.
+		}
+		
+		System.out.println("----------------------------------------------------------------------------"); // Separador. Apenas para fins visuais.
+			
+		// Verificando o tamanho da lista.
+		System.out.println("Terceira exibição: Tamanho da lista.");
+		System.out.println(); // Quebra de linha.
+		
+		int tamanhoLista = list.size();
+		System.out.println("Tamanho da lista: " + tamanhoLista);
+		
+		System.out.println("----------------------------------------------------------------------------"); // Separador. Apenas para fins visuais.
+		
+		// Removendo um elemento da lista.
+		list.remove("Anna"); // Remoção de um elemento específico da lista através de comparação.
+		
+		// list.remove(1); // Também sendo possível a remoção de um elemento pelo seu índice.
+		
+		// Exibição da lista atualizada após remoção de "Anna".
+		System.out.println("Quarta exibição: Remoção do elemento Anna.");
+		System.out.println(); // Quebra de linha.
+		
+		for(String obj : list) {
+			System.out.println("Nomes cadastrados: " + obj);
+		} 
+		
+		System.out.println("----------------------------------------------------------------------------"); // Separador. Apenas para fins visuais.
+		
+		// Remoção de elementos que atendam a um predicado.
+		// Exemplo: Remoção de todos os elementos que começam com a letra "M".
+		
+		list.removeIf(obj -> obj.charAt(0) == 'M'); // Atenção as aspas "simples".
+		// Considerações sobre a função acima: Se trata de uma função lambda predicado, retornando verdadeiro ou falso.
+		
+		// Exibição da lista após a remoção por predicado.
+		System.out.println("Quinta exibição: Remoção de elementos que começam com 'M'");
+		System.out.println(); // Quebra de linha.
+		
+		for(String obj: list) {
+			System.out.println("Nomes cadastrados: " + obj);
+		}
+		
+		System.out.println("----------------------------------------------------------------------------"); // Separador. Apenas para fins visuais.
+		
+		// Econtrando a posição de um elemento na lista.
+		// Exemplo 1: Encontrando a posição de um elemento específico. "Bob".
+		
+		System.out.println("Sexta exibição: Encontrando a posição na lista de 'Bob'");
+		System.out.println(); // Quebra de linha.
+		
+		System.out.println("Posição de Bob na lista: " + list.indexOf("Bob"));
+		System.out.println(); // Quebra de linha.
+		
+		System.out.println("Procurando elemento inexistente na lista 'Marco'");
+		System.out.println(); // Quebra de linha.
+		
+		System.out.println("Posição de Marco na lista: " + list.indexOf("Marco"));
+		System.out.println("Quando um elemento não é encontrado recebemos: -1");
+		
+		System.out.println("----------------------------------------------------------------------------"); // Separador. Apenas para fins visuais.
+		
+		// Deixando na lista somente elementos que atendam a um requisito.
+		// Exemplo: Deixando na lista somente os elementos que começam com a letra "A".
+		
+		// Começamos criando uma nova lista, na qual será armazenado o resultado.
+		List<String> result = list.stream().filter(obj -> obj.charAt(0) == 'A').collect(Collectors.toList());
+		
+		// Exibição da lista após a filtragem dos elementos.
+		System.out.println("Sétima exibição: Permitido apenas elementos que começam com 'A'");
+		System.out.println(); // Quebra de linha.
+		
+		for(String obj: result) { // Atenção ao for agora iterando sob a lista "result".
+			System.out.println("Nomes cadastrados: " + obj);
+		}
+		
+		System.out.println("----------------------------------------------------------------------------"); // Separador. Apenas para fins visuais.
+		
+		// Encontrando um determinado elemento na lista que atenda a um predicado.
+		// Exemplo: Encontrar primeiro elemento que começa com a letra 'A'.
+		
+		String name = list.stream().filter(obj -> obj.charAt(0) == 'A').findFirst().orElse(null);
+		
+		System.out.println("Oitava exibição: Exibir o primeiro elemento da lista iniciando com 'A'");
+		System.out.println(); // Quebra de linha.
+		
+		// Aqui não é preciso o loop for, pois se trata da impressão de uma variável e não uma lista.
+		System.out.println("Primeiro nome iniciado com a letra A: " + name);
+					
+		System.out.println("----------------------------------------------------------------------------"); // Separador. Apenas para fins visuais.
+		
+		}
+	}
+
+

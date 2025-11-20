@@ -1,0 +1,60 @@
+// Descrição do exercício.
+
+/* Faça um programa que leia um número inteiro positivo N (máximo = 10) e depois N números inteiros
+e armazene-os em um vetor. Em seguida, mostrar na tela todos os números negativos lidos. */
+
+// Exercício modificado para fazer uso de práticas de OO e ArrayList.
+
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+import entities.Numero;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US); // Permite o uso de ponto como separador decimal.
+		
+		Scanner sc = new Scanner(System.in); // Atribui o Scanner a variável sc.
+		
+		int qtdNumeros = 0;
+		
+		// Bloco garantindo uma entrada numérica válida.
+		do {
+			System.out.print("Quantos números você vai digitar?: ");
+			qtdNumeros = sc.nextInt();
+			if(qtdNumeros == 0 || qtdNumeros > 10) { // Condição que retorna um erro.
+				System.out.printf("Valor inválido!%n"); // Mensagem de advertência.
+			}
+			
+		} while(qtdNumeros == 0 || qtdNumeros > 10); // Condição que mantém o loop.
+		
+		System.out.println(); // Quebra de linha para legibilidade.
+		
+		List<Numero> list = new ArrayList<>(); // Lista do tipo entities.Numero.
+		
+		// Bloco para captura e registro dos dados na lista.
+		for(int i = 0; i < qtdNumeros; i++) { // Loop for percorrendo a lista.
+				System.out.print("Digite um número: ");
+				list.add(new Numero(sc.nextInt())); // Registra diretamente o valor a lista, dispensando variável intermediária.
+		}
+		
+		System.out.println(); // Quebra de linha para legibilidade.
+		
+		// Bloco exibindo os valores negativos:
+		System.out.println("Números negativos:");
+		for(Numero obj : list) { // For each percorrendo a lista.
+			System.out.println(obj.getNegativo());
+			
+		}
+		
+		
+		sc.close(); // Fecha o Scanner.
+	}
+
+}

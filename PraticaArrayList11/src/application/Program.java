@@ -1,0 +1,79 @@
+// Descrição do exercício.
+
+/* Tem-se um conjunto de dados contendo a altura e o gênero (M, F) de N pessoas. Fazer um programa
+que calcule e escreva a maior e a menor altura do grupo, a média de altura das mulheres, e o número
+de homens. */
+
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+import entities.Pessoa;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US); // Usa ponto como separador decimal.
+		Scanner sc = new Scanner(System.in);
+		
+		List<Pessoa> list = new ArrayList<>();
+		
+		int qtdPessoa = 0;
+		
+		// Valida entrada numérica.
+		do {
+			System.out.print("Quantas pessoas serão digitadas? ");
+			qtdPessoa = sc.nextInt();
+			sc.nextLine(); // Consome quebra de linha.
+			if(qtdPessoa <=0) {
+				System.out.printf("Valor inválido!%nDigite um valor inteiro maior que zero.%n");
+			}
+		} while(qtdPessoa <= 0);
+		System.out.println();
+		
+		// Captura e registro dos dados.
+		for(int i=0; i<qtdPessoa; i++) {
+			System.out.printf("Altura da %dª pessoa: %n", i+1);
+			double altura = sc.nextDouble();
+			System.out.printf("Gênero da %dª pessoa: %n", i+1);
+			char genero = sc.next().toUpperCase().charAt(0);
+			list.add(new Pessoa(altura, genero)); // Registra os dados na lista.
+			System.out.println();
+		}
+		
+		// Obtenção das alturas.
+		double menorAltura = list.get(0).getAltura();
+		double maiorAltura = list.get(0).getAltura();
+		double somaAlturas = 0.0;
+		int qtdMulheres = 0;
+		
+		for(Pessoa obj : list) {
+			if(obj.getAltura() > maiorAltura) {
+				maiorAltura = obj.getAltura();
+			}
+			
+			if(obj.getAltura() < menorAltura) {
+				menorAltura = obj.getAltura();
+			}
+			
+			if(obj.getGenero() == 'F') {
+				somaAlturas += obj.getAltura();
+				qtdMulheres++;
+			}
+			
+		}
+		System.out.println("Menor altura: " + menorAltura);
+		System.out.println("Maior altura: " + maiorAltura);
+		System.out.println();
+		System.out.printf("Média de altura das mulheres: %.2f%n", somaAlturas/qtdMulheres);
+		System.out.printf("Número de homens: %d%n", list.size()-qtdMulheres);
+		
+		
+		sc.close();
+	}
+
+}

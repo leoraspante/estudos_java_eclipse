@@ -1,0 +1,78 @@
+// Descrição do exercício.
+
+/* Faça um programa para ler dois vetores A e B, contendo N elementos cada. Em seguida, gere um
+terceiro vetor C onde cada elemento de C é a soma dos elementos correspondentes de A e B. Imprima
+o vetor C gerado. */
+
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+import entities.Vect1;
+import entities.Vect2;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US); // Permite ponto como separador decimal.
+		Scanner sc = new Scanner(System.in);
+		
+		List<Vect1> list1 = new ArrayList<>();
+		List<Vect2> list2 = new ArrayList<>();
+		
+		int qtdNumeros = 0;
+		
+		// Valida a entrada numérica.
+		do {
+			System.out.print("Quantos valores vai ter cada lista? ");
+			qtdNumeros = sc.nextInt();
+			sc.nextLine(); // Consome quebra de linha pendente.
+			if(qtdNumeros <= 0) {
+				System.out.printf("Valor inválido!%nDigite um número inteiro maior que zero.%n");
+			}
+		} while(qtdNumeros <= 0);
+		System.out.println();
+		
+		// Captura e registro de dados da lista 1.
+		System.out.println("Digite os valores da primeira lista: ");
+		for(int i=0; i<qtdNumeros; i++) {
+			System.out.printf("%dº Valor: ", i+1);
+			list1.add(new Vect1(sc.nextDouble()));
+		}
+		
+		System.out.println();
+		
+		// Captura e registro de dados da lista 2.
+		System.out.println("Digite os valores da segunda lista: ");
+		for(int i=0; i<qtdNumeros; i++) {
+			System.out.printf("%dº Valor: ", i+1);
+			list2.add(new Vect2(sc.nextDouble()));
+		}
+		
+		System.out.println();
+		
+		System.out.println("Lista resultante: ");
+		
+		for(int i=0; i<qtdNumeros; i++) {
+			double num1 = list1.get(i).getNumber1();
+			double num2	= list2.get(i).getNumber2();				
+			double result = num1 + num2;
+			System.out.println(result);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		sc.close();
+
+	}
+
+}

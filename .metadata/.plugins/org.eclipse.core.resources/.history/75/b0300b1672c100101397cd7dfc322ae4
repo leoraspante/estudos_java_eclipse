@@ -1,0 +1,36 @@
+package entities;
+
+public class Number {
+	
+	// Atributos.
+	private double number;
+	
+	// Construtor.
+	public Number(double number) {
+		this.number = number;
+	}
+
+	// Getter.
+	public double getNumber() {
+		return number;
+	}
+
+	// Setter.
+	public void setNumber(double number) {
+		this.number = number;
+	}
+
+	@Override
+	public String toString() {
+		return number; 
+	}
+	 
+	
+
+	
+	
+	
+	
+	
+	
+}

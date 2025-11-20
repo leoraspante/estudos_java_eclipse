@@ -1,0 +1,51 @@
+package entities;
+
+public class Employee {
+	
+	// Definição dos atributos.
+	private Integer id;
+	private String name;
+	private Double salary; 
+	
+	// Construtor.
+	public Employee(Integer id, String name, Double salary) {
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+	}
+	
+	// Getters.
+	public Integer getId(Integer id) {
+		return this.id = id;
+	}
+	public String getName(String name) {
+		return this.name = name;
+		
+	}
+	public Double getSalary(Double salary) {
+		return this.salary = salary;
+	}
+	
+	// Setters.
+	public Integer setId(Integer id) {
+		return this.id;
+	}
+	public String setName(String name) {
+		return this.name = name;
+	}
+	public Double setSalary(Double salary) {
+		return this.salary = salary;
+	}
+	
+	// Métodos.
+	public void increaseSalary() {
+		
+	}
+
+	@Override
+	public String toString() { 
+		return String.format("%d, %s, %.2f%n", id, name, salary);
+	}
+ 
+}
+ 

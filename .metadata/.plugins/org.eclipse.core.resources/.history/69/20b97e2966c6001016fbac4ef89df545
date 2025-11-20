@@ -1,0 +1,151 @@
+import java.util.Scanner;
+import java.util.Locale;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Program {
+	public static void main(String[] args) {
+
+		Locale.setDefault(Locale.US); // Altera o local para US, permitindo o uso de ponto como separador decimal.
+
+		Scanner sc = new Scanner(System.in); // Define Scanner na variavel sc.
+
+		// Mensagem de apresentacao.
+		System.out.println("-----------------------------------Controle estudantil-----------------------------------");
+		System.out.println();
+		System.out.println("Menu de opcoes:");
+		System.out.println();
+		System.out.println("1 - Matricular alunos.");
+		System.out.println("2 - Registrar notas.");
+		System.out.println("3 - Alunos matriculados.");
+		System.out.println("4 - Alunos aprovados .");
+		System.out.println("5 - Alunos reprovados.");
+		System.out.println("6 - Alunos em recuperacao.");
+		System.out.println("0 - Encerrar programa.");
+
+		List<Integer> opcoesValidas = Arrays.asList(0, 1, 2, 3, 4, 5, 6); // lista contendo as opcoes validas.
+
+		// Lista para armazenamento dos dados dos alunos.
+		List<String> nomeAlunos = new ArrayList<>();
+		List<Integer> idadeAlunos = new ArrayList<>();
+		List<Double> notaAlunos = new ArrayList<>();
+
+		System.out.println(); // Quebra de linha para melhor legibilidade.
+
+		while (!opcao == 0) {
+			// Checagem inicial garantindo uma escolha valida.
+			int opcao = 0;
+
+			do {
+				System.out.print("Informe a opcao desejada: ");
+				opcao = sc.nextInt();
+				sc.nextLine();
+				if (!opcoesValidas.contains(opcao)) { // Checa se o valor informado pelo usuario existe na lista.
+					System.out.println("Opcao invalida.");
+				}
+			} while (!opcoesValidas.contains(opcao)); // Loop continua enquanto a opcao escolhida nao existir na lsita.
+
+			System.out.println(); // Quebra de linha para melhor legibilidade.
+
+			int qtd = 0;
+
+			switch (opcao) {
+			case 1:
+				System.out.println("Matricular alunos");
+				System.out.println(); // Quebra de inha para melhor legibilidade.
+
+				// Bloco garantindo uma entrada numerica valida.
+				do {
+					System.out.print("Quantos alunos deseja matricular?: ");
+					qtd = sc.nextInt();
+					sc.nextLine();
+					if (verificaNumero(qtd)) {
+						System.out.println("Digite um valor valido!");
+					}
+				} while (verificaNumero(qtd));
+
+				System.out.println(); // Quebra de inha para melhor legibilidade.
+
+				// Bloco responsavel pela coleta e registro dos nomes dos alunos.
+				for (int i = 0; i < qtd; i++) {
+					System.out.print("Nome do Aluno: ");
+					nomeAlunos.add(sc.nextLine()); // Captura e registra na lista o nome do aluno.
+				}
+				break;
+
+			case 2:
+				System.out.println("Registrar notas");
+			case 3:
+				System.out.println("Alunos matriculados");
+			case 4:
+				System.out.println("Alunos aprovados");
+			case 5:
+				System.out.println("Alunos reprovados");
+			case 6:
+				System.out.println("Alunos em recuperacao");
+			case 0:
+				System.out.println("Fim do programa");
+				break;
+
+			}
+
+		}
+
+		/*
+		 * int qtdNotas = 0; // Armazena a quantidade de notas a ser digitada pelo
+		 * usuario.
+		 * 
+		 * do { // Loop do-while garantindo uma entrada numerica valida.
+		 * System.out.print("Quantas notas deseja informar?: "); qtdNotas =
+		 * sc.nextInt(); if(qtdNotas <= 0){ // Condicao invalida de entrada. System.out.
+		 * printf("Valor invalido!%nDigite um valor inteiro positivo maior que zero.");
+		 * } } while(qtdNotas <= 0); // Garante a execucao do loop enquanto a condicao
+		 * persistir.
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * System.out.println(); // Quebra de linha para melhor legibilidade.
+		 * 
+		 * List<Double> list = new ArrayList<>(); // Lista do tipo double para armazenar
+		 * as notas.
+		 * 
+		 * 
+		 * 
+		 * 
+		 * double somaNotas = 0.0; // Acumula a soma de todas as notas.
+		 * 
+		 * for(int i = 0; i < qtdNotas; i++){
+		 * System.out.printf("Informe a %d nota do aluno%n", i+1);
+		 * list.add(sc.nextDouble()); somaNotas += list.get(i); }
+		 * 
+		 * System.out.println(); // Quebra de linha para melhor legibilidade.
+		 * 
+		 * double mediaNotas = somaNotas/list.size(); // Obtida a media atraves da soma
+		 * de todas as notas dividido pela quantidade de notas (ou tamanho da lista).
+		 * 
+		 * System.out.printf("Media das notas: %.2f%n", mediaNotas);
+		 * 
+		 * double menorNota = Collections.min(list);
+		 * 
+		 * double maiorNota = Collections.max(list);
+		 * 
+		 * System.out.println(); // Quebra de linha para melhor legibilidade.
+		 * 
+		 * System.out.println("Menor nota obtida: " + menorNota);
+		 * 
+		 * System.out.println(); // Quebra de linha para melhor legibilidade.
+		 * 
+		 * System.out.println("Maior nota obtida: " + maiorNota);
+		 * 
+		 */
+
+	}
+
+	static boolean verificaNumero(int numero) {
+		return numero <= 0;
+	}
+}

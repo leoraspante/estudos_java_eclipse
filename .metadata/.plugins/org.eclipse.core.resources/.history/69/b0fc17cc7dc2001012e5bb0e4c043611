@@ -1,0 +1,27 @@
+package entities;
+
+public class Numero {
+	
+	private int numero;
+	
+	public Numero(int numero) {
+		this.numero = numero;
+	}
+	
+	public int getNumero() {
+		return numero;
+	}
+	
+	public int getNegativo() {
+		if(numero < 0) {
+			return numero;
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	public String toString() {
+		return "" + numero;
+	}
+}

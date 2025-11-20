@@ -1,0 +1,67 @@
+// Descrição do exercício.
+
+/* Fazer um programa para ler nome, idade e altura de N pessoas, conforme exemplo. Depois, mostrar na
+tela a altura média das pessoas, e mostrar também a porcentagem de pessoas com menos de 16 anos,
+bem como os nomes dessas pessoas caso houver. */
+
+// Exercício modificado para fazer uso de práticas de OO e ArrayList.
+
+package application;
+// Importações
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+import entities.People;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		// Alteração do local para US, permitindo o uso de ponto como separador decimal.
+		Locale.setDefault(Locale.US);
+		
+		// Declaração do Scanner.
+		Scanner scanner = new Scanner(System.in);
+		
+		// Declaração de variável, controlando a qtd de pessoas.
+		int qtdPessoas;
+		
+		// Checagem inicial garantindo uma entrada válida de dados.
+		do {
+			System.out.print("Quantas pessoas serão digitadas?: ");
+			qtdPessoas = scanner.nextInt();
+			if(qtdPessoas <= 0) {
+				System.out.println("Quantidade inválida!");
+				System.out.println("Digite um valor inteiro maior que zero.");
+			}
+		} while(qtdPessoas <= 0);
+		
+		// Criação de uma lista, armazenando objetos do tipo entities.Pessoa.
+		List<People> list = new ArrayList<>();
+		
+		// Coleta e registro dos dados.
+		for(int i = 0; i < qtdPessoas; i++) {
+			System.out.printf("Dados da %dª pessoa:%n", i+1);
+			
+			System.out.print("Nome: ");
+			scanner.nextLine();
+			String nome = scanner.nextLine();
+			
+			System.out.print("Idade: ");
+			int idade = scanner.nextInt();
+			
+			System.out.print("Altura: ");
+			double altura = scanner.nextDouble();
+			
+		}
+		
+		
+		
+		// Fechamento do Scanner.
+		scanner.close();
+
+	}
+
+}

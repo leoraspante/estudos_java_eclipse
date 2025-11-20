@@ -1,0 +1,22 @@
+// Descrição do exercício.
+
+/* Faça um programa que leia um número inteiro positivo N (máximo = 10) e depois N números inteiros
+e armazene-os em um vetor. Em seguida, mostrar na tela todos os números negativos lidos. */
+
+// Exercício modificado para fazer uso de práticas de OO e ArrayList.
+
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+public class Program {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

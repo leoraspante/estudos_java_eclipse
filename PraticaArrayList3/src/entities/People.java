@@ -1,0 +1,51 @@
+package entities;
+
+public class People {
+	
+	// Atributos.
+	private String nome;
+	private int idade;
+	private double altura;
+	
+	// Construtor vazio.
+	public People() {
+		
+	}
+	
+	// Construtor com parâmetros.
+	public People(String nome, int idade, double altura) {
+		this.nome = nome;
+		this.idade = idade;
+		this.altura = altura;
+		
+	}
+	
+	// Getters.
+	public String getNome() {
+		return this.nome;
+	}
+	public int getIdade() {
+		return this.idade;
+	}
+	public double getAltura() {
+		return this.altura;
+	}
+	
+	// Setters.
+	public void setName(String nome) {
+		this.nome = nome;
+	}
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+	
+	// toString personalizado.
+	@ Override
+	public String toString() {
+		return String.format("Nome: %s%nIdade: %d%nAltura: %.2f%n", nome, idade, altura);
+	}
+	
+}

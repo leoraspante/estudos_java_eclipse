@@ -1,0 +1,66 @@
+// Descrição do exercício.
+
+/* A dona de um pensionato possui dez quartos para alugar para estudantes, sendo esses quartos identificados pelos números 0 a 9.
+Fazer um programa que inicie com todos os dez quartos vazios, e depois leia uma quantidade N representando o número de estudantes que vão alugar quartos (N pode ser de 1 a 10).
+Em seguida, registre o aluguel dos N estudantes. Para cada registro de aluguel, informar o nome e email do estudante, bem como qual dos quartos ele escolheu (de 0 a 9). 
+Suponha que seja escolhido um quarto vago. Ao final, seu programa deve imprimir um relatório de todas ocupações do pensionato, por ordem de quarto, conforme exemplo. */
+
+package program;
+
+// Importação de classes.
+import java.util.Locale;
+import java.util.Scanner;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// Alteração do local para US, permitindo o uso de ponto como separador decimal.
+		Locale.setDefault(Locale.US);
+		
+		// Atribuição do Scanner na variável input.
+		Scanner input = new Scanner(System.in);
+		
+		// Definição de variável armazenando a quantidade de quartos.
+		int qtdQuartos = 0;
+		
+		// Checagem inicial garantindo a entrada válida de dados.
+		do {
+			System.out.print("Quantos quartos serão alugados? ");
+			qtdQuartos = input.nextInt();
+			if(qtdQuartos <= 0) {
+				System.out.println("Valor inválido!");
+				System.out.println("Digite um número positivo maior que zero.");
+			}
+		} while(qtdQuartos <= 0);
+		
+		// Criação de vetores armazenando nome, email e quarto.
+		String[] vectNome = new String[qtdQuartos]; // Armazena o nome de quem aluga.
+		String[] vectMail = new String[qtdQuartos]; // Armazena o email de quem aluga.
+		int[] vectQuarto = new int[qtdQuartos]; // Armazena o número do quarto alugado.
+		
+		System.out.println(); // Quebra de linha.
+		
+		// Captura e armazenamento dos dados.
+		for(int i = 0; i < qtdQuartos; i++) {
+			System.out.printf("Aluguel nº %d:%n", i+1);
+			input.nextLine();
+			System.out.print("Nome: ");
+			vectNome[i] = input.nextLine();
+			System.out.print("Email: ");
+			vectMail[i] = input.nextLine();
+			System.out.print("Quarto: ");
+			vectQuarto[i] = input.nextInt();
+			
+			
+		}
+		
+		
+		// Fechamento do Scanner.
+		input.close();
+		
+
+	}
+
+}

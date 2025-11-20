@@ -1,0 +1,103 @@
+// Descrição do exercício.
+
+/* Fazer um programa para ler nome, idade e altura de N pessoas, conforme exemplo. Depois, mostrar na
+tela a altura média das pessoas, e mostrar também a porcentagem de pessoas com menos de 16 anos,
+bem como os nomes dessas pessoas caso houver. */
+
+// Exercício modificado para fazer uso de práticas de OO e ArrayList.
+
+package application;
+// Importações
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+import entities.People;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		// Alteração do local para US, permitindo o uso de ponto como separador decimal.
+		Locale.setDefault(Locale.US);
+		
+		// Declaração do Scanner.
+		Scanner scanner = new Scanner(System.in);
+		
+		// Declaração de variáveis.
+		int qtdPessoas; // Controla a quantidade de pessoas.
+		double somaAlturas = 0.0; // Armazena a soma de todas as alturas.
+		int qtdMenores16 = 0; // Armazena a qtd de pessoas menores de 16 anos.
+		double mediaAlturas = 0.0; // Armazena a média das alturas.
+		double porcentagem = 0.0; // Armazena a porcentagem das alturas.
+		
+		// Declaração de lista.
+		List<People> list = new ArrayList<>(); // Armazena objetos do tipo entities.Pessoa
+		
+		// Bloco1 : Checagem inicial garantindo uma entrada numérica válida
+		do {
+			System.out.print("Quantas pessoas serão digitadas?: ");
+			qtdPessoas = scanner.nextInt();
+			if(qtdPessoas <= 0) { // Condição de entrada.
+				System.out.println("Quantidade inválida!");
+				System.out.println("Digite um valor inteiro maior que zero.");
+			}
+		} while(qtdPessoas <= 0); // Mantém o loop mediante tal condição.
+		
+		System.out.println(); // Quebra de linha para melhor legibilidade.
+		
+		// Bloco 2: Coleta, registro e manipulação de dados.
+		for(int i = 0; i < qtdPessoas; i++) {
+			System.out.printf("Dados da %dª pessoa:%n", i+1);
+			System.out.println(); // Quebra de linha para melhor legibilidade.
+			
+			System.out.print("Nome: ");
+			scanner.nextLine(); // Consome a quebra de linha pendente do último nextInt().
+			String nome = scanner.nextLine();
+			
+			System.out.print("Idade: ");
+			int idade = scanner.nextInt();
+			
+			System.out.print("Altura: ");
+			double altura = scanner.nextDouble();
+			
+			System.out.println(); // Quebra de linha para melhor legibilidade.
+			
+			list.add(new People(nome, idade, altura)); // Código onde cada registro é feito como um novo objeto do tipo pessoa.
+			
+			// Aproveitando o loop para coletar qtd de menores de 16.
+			if(list.get(i).getIdade() < 16) { // Condição if.
+				qtdMenores16 ++; // Acrescenta a variável caso condição seja atendida.
+			}
+			
+			somaAlturas += list.get(i).getAltura(); // Capturando a soma das alturas.
+				
+		}
+		
+		mediaAlturas = somaAlturas/list.size(); // Todas alturas acumuladas dividido pelo tamanho da lista.
+		
+		porcentagem = qtdMenores16 * 100.0 / list.size(); // Fórmula para otenção da porcentagem.
+		
+		// Bloco 3: Exibição de dados.		
+		// Exibição da altura média.
+		System.out.printf("Altura média: %.2f%n", mediaAlturas);
+		
+		System.out.println(); // Quebra de linha para melhor legibilidade.
+		
+		// Exbibição da porcentagem de pessoas menores que 16.
+		System.out.printf("Pessoas com menos de 16 anos: %.1f%%%n", porcentagem);
+		
+		// Loop exibindo as pessoas menores de 16 anos.
+		for(People obj : list) {
+			if(obj.getAltura() < 16) {
+				System.out.println(obj);
+			}
+		}		
+		
+		// Fechamento do Scanner.
+		scanner.close();
+
+	}
+
+}

@@ -1,0 +1,72 @@
+// Descrição do exercício.
+
+/* Faça um programa que leia N números reais e armazene-os em um vetor. Em seguida, mostrar na tela
+o maior número do vetor (supor não haver empates). Mostrar também a posição do maior elemento,
+considerando a primeira posição como 0 (zero). */
+
+package application;
+
+// Importações.
+
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+import entities.Numeros;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US); // Permite uso de ponto como separador decimal.
+		Scanner sc = new Scanner(System.in);
+		
+		int qtdNumeros = 0;
+		
+		// Valida entrada numérica.
+		do {
+			System.out.print("Quantos números você vai digitar?: ");
+			qtdNumeros = sc.nextInt();
+			sc.nextLine(); // Consome quebra de linha pendente.
+			if(qtdNumeros <= 0) {
+				System.out.printf("Valor inválido!%nDigite um valor inteiro positivo maior que zero.%n");
+			}
+		} while(qtdNumeros <= 0);
+		
+		System.out.println();
+		
+		List<Numeros> list = new ArrayList<>();
+		
+		// Captura e registro de dados.
+		for(int i = 0; i < qtdNumeros; i++) {
+			System.out.printf("Digite o %dº número: ", i+1);
+			list.add(new Numeros(sc.nextDouble()));
+		}
+		
+
+		double maiorValor = 0.0;
+		int posicao = 0;
+		
+		// Obtenção do maior valor e sua posição.
+		for(Numeros obj : list) {
+			if(obj.getNumero() > maiorValor) {
+				maiorValor = obj.getNumero();
+				posicao++;
+			}
+		}
+		
+		System.out.println();
+		
+		// Saída dos resultados.
+		System.out.println("Maior valor: " + maiorValor);
+		System.out.println("Posição do maior valor: " + posicao);
+		
+		
+		
+		
+		sc.close();
+
+	}
+
+}
