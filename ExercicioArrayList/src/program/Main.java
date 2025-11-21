@@ -12,7 +12,6 @@ aumento por porcentagem dada. */
 
 package program;
 
-// Importações
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.List;
@@ -24,78 +23,85 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		// Alteração do local para US, permitindo o uso de ponto como separador decimal.
-		Locale.setDefault(Locale.US);
+		Locale.setDefault(Locale.US); // Usa ponto como separador decimal.
+		Scanner sc = new Scanner(System.in);
 		
-		// Atribuição do Scanner a variável input.
-		Scanner input = new Scanner(System.in);
-		
-		// Definição de variável para armazenar a quantidade de registros.
-		int employeeNum = 0;
-		
-		// Checagem inicial garantindo uma entrada válida de dados.
-		do {
-			System.out.print("How many employees will be registered? ");
-			employeeNum = input.nextInt();
-			if(employeeNum <= 0) {
-				System.out.println("Invalid value!");
-				System.out.println("Be sure to input a positive number bigger than zero.");
-			}
-		} while(employeeNum <= 0);
-		
-		System.out.println(); // Quebra de linha.		
-		
-		// Criação da lista vazia, onde os dados armazenados serão do tipo "Employee".
 		List<Employee> list = new ArrayList<>();
 		
-		// Captura e armazenamento dos dados nas listas.
-		for(int i = 0; i < employeeNum; i++) {
-			System.out.printf("Emplyoee #%d:%n", i+1);
-			
-			System.out.print("ID: ");
-			int id = input.nextInt(); // Armazena temporariamente o ID.
-			
-			input.nextLine();
-			System.out.print("Name: ");
-			String name = input.nextLine(); // Armazena temporariamente o nome.
-			
-			System.out.print("Salary: ");
-			double salary = input.nextDouble(); // Armazena temporariamente o salário.
-			
-			// Bloco onde os registros são armazenados na lista.
-			list.add(new Employee(id, name, salary));
-			
-			System.out.println(); // Quebra de linha.
-			
+		int qtdEmpregados = 0;
+		
+		// Valida entrada numérica.
+		do {
+			System.out.print("How many employees will be registered? ");
+			qtdEmpregados = sc.nextInt();
+			sc.nextLine(); // Consome quebra de linha.
+			if(qtdEmpregados <=0) {
+				System.out.printf("Invalid value!%nEnter an integer greater than zero.%n");
 			}
+		} while(qtdEmpregados <=0);
+		System.out.println();
 		
-		// Bloco responsável pelo aumento de salário do funcionário.
-		System.out.print("Enter the employee id that will have salary increase:");
-		int id = input.nextInt();
+		// Captura e registro dos dados.
+		for(int i=0; i<qtdEmpregados; i++) {
+			System.out.printf("Employee #%d%n", i+1);
+			System.out.print("Id: ");
+			int id = sc.nextInt();
+			sc.nextLine(); // Consome quebra de linha.
+			
+			while(hasId(list, id)) { // Utiliza o método para verificar a unicidade do id.
+				System.out.println("Id already taken, try again!");
+				System.out.print("Id: ");
+				id = sc.nextInt();
+				sc.nextLine(); // Consome quebra de linha.
+			}
+			
+			System.out.print("Name: ");
+			String name = sc.nextLine();
+			System.out.print("Salary: ");
+			double salary = sc.nextDouble();
+			
+			list.add(new Employee(id, name, salary)); // Registro dos dados na lista.
+			System.out.println();
+		}
 		
-		// Condição para encontrar na lista uma id igual a informada pelo usuário.
-		Employee emp = list.stream().filter(obj -> obj.getId() == id).findFirst().orElse(null);
+		// Coleta de dados para aumentar salário.
+		System.out.print("Enter the employee id that will have salary increase: ");
+		int idSearch = sc.nextInt();
+		sc.nextLine(); // Consome quebra de linha.
+				
+		// Encontrando ID para aumentar salário.
+		boolean found = false;
+		for(Employee obj : list) {
+			if(obj.getId() == idSearch) {
+				System.out.print("Enter the percentage: ");
+				double percentage = sc.nextDouble();
+				obj.increaseSalary(percentage);
+				found = true;
+				break;
+			}
+		}
 		
-		if(emp == null) {
+		if(!found) { // Mensagem de erro, caso id não exista.
 			System.out.println("This id does not exist!");
 		}
-		else {
-			System.out.print("Enter the percentage: ");
-			double percentage = input.nextDouble();
-			emp.increaseSalary(percentage);
-		}
+		System.out.println();
 		
-		System.out.println(); // Quebra de linha.
-		
-		// Exibição dos empregados.
+		// Exibição atualizada de funcionários.
 		System.out.println("List of employees:");
 		for(Employee obj : list) {
 			System.out.println(obj);
 		}
-
-		
-		// Fechamento do Scanner.
-		input.close();
+			
+		sc.close();
+	}
+	
+	public static boolean hasId(List<Employee> list, int id) { // Garante a unicidade do id.
+		for(Employee obj : list) {
+			if(obj.getId() == id) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

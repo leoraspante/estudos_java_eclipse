@@ -2,53 +2,27 @@ package entities;
 
 public class Employee {
 	
-	// Definição dos atributos.
-	private Integer id;
+	private int id;
 	private String name;
-	private Double salary; 
+	private double salary; 
 	
-	// Contrutor sem argumentos.
-	public Employee() {
-		
-	}
 	
-	// Construtor com argumentos.
-	public Employee(Integer id, String name, Double salary) {
+	public Employee(int id, String name, double salary) {
 		this.id = id;
 		this.name = name;
 		this.salary = salary;
 	}
 	
-	// Getters.
-	public Integer getId() {
+
+	public int getId() {
 		return id;
 	}
-	public String getName() {
-		return name;
-		
-	}
-	public Double getSalary() {
-		return salary;
-	}
 	
-	// Setters.
-	public Integer setId(Integer id) {
-		return this.id = id;
-	}
-	public String setName(String name) {
-		return this.name = name;
-	}
-	public Double setSalary(Double salary) {
-		return this.salary = salary;
-	}
-	
-	// Métodos.
-	public void increaseSalary(double percentage) {
+	public void increaseSalary(double percentage) { // Método para aumento de salário.
 		salary += salary * percentage / 100.0;
 		
 	}
 
-	// toString personalizada.
 	@Override
 	public String toString() { 
 		return String.format("Id: %d, Name: %s, Salary: $ %.2f", id, name, salary);
