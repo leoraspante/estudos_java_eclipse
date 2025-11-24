@@ -11,6 +11,7 @@
     <fullyQualifiedTypeName name="entities.Numeros"/>
     <fullyQualifiedTypeName name="entities.Vect1"/>
     <fullyQualifiedTypeName name="entities.Vect2"/>
-    <fullyQualifiedTypeName name="entities.Aluno"/>
     <fullyQualifiedTypeName name="entities.Pessoa"/>
+    <fullyQualifiedTypeName name="entities.Aluno"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>
