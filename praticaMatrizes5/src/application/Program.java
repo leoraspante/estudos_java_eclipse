@@ -16,7 +16,6 @@ public class Program {
 		Random rand = new Random();
 		int[][] mat = new int[4][4];
 		
-		// Mensagem de apresentação
 		// Mensagem de apresentação e instrução.
 		System.out.println("Prática com matrizes");
 		System.out.println("Exibe e soma os elementos da diagonal principal");
