@@ -73,4 +73,11 @@
 	<section name="WorkingSetModelAwareSelectionDialog">
 		<item key="ShowVisibleOnly" value="true"/>
 	</section>
+	<section name="NewEnumCreationWizard.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="678"/>
+		<item key="DIALOG_Y_ORIGIN" value="144"/>
+		<item key="DIALOG_WIDTH" value="570"/>
+		<item key="DIALOG_HEIGHT" value="562"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|10.0|0|GTK|1|"/>
+	</section>
 </section>
