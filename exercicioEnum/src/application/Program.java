@@ -34,6 +34,8 @@ public class Program {
 		System.out.print("Base salary: ");
 		double baseSalary = sc.nextDouble();
 		
+		System.out.println();
+		
 		Worker worker = new Worker(workerName, WorkerLevel.valueOf(workerLevel), baseSalary, new Department(departmentName));
 		
 		System.out.print("How many contracts to this worker?");
@@ -41,7 +43,7 @@ public class Program {
 		sc.nextLine();
 		
 		for (int i=0; i<n; i++) {
-			System.out.printf("Enter contract #%d data:%n", i+1);
+			System.out.printf("Enter contract #%d data: %n", i+1);
 			System.out.print("Date (DD/MM/YYYY): ");
 			Date contractDate = sdf.parse(sc.next());
 			System.out.print("Value per hour: ");
