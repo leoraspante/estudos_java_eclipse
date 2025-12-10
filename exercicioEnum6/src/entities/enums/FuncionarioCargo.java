@@ -1,0 +1,16 @@
+package entities.enums;
+
+public enum FuncionarioCargo {
+
+	ANALISTA,
+	ASSISTENTE,
+	AUXILIAR,
+	COORDENADOR,
+	DIRETOR,
+	ESTAGIARIO,
+	GERENTE,
+	RECEPCIONISTA,
+	SUPERVISOR,
+	TECNICO,
+	VENDEDOR;
+}

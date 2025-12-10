@@ -1,0 +1,14 @@
+package entities.enums;
+
+public enum FuncionarioSetor {
+	ADMINISTRATIVO,
+	COMPRAS,
+	FINANCEIRO,
+	JURIDICO,
+	LOGISTICA,
+	MARKETING,
+	PRODUCAO,
+	RECURSOS_HUMANOS,
+	TECNOLOGIA_DA_INFORMAÇÃO,
+	VENDAS;
+}
