@@ -44,9 +44,23 @@ public class Reservation {
 		return daysBetween;
 	}
 	
-	public void updateDates(LocalDate checkIn, LocalDate checkOut) {
+	public String updateDates(LocalDate checkIn, LocalDate checkOut) {
+				
+		if (checkIn.isAfter(checkOut)) {
+			return "Check-out date must be after check-in date";
+		}
+		
+		if(checkIn.isBefore(LocalDate.now()) || checkOut.isBefore(LocalDate.now())) {
+			return "Reservation dates must be future dates";
+		}
+		
+		if(checkIn.isBefore(this.checkIn) || checkOut.isBefore(this.checkOut)) {
+			return "Reservation dates for update must be future dates";
+		}
 		this.checkIn = checkIn;
-		this.checkOut = checkOut;
+		this.checkOut = checkOut; 
+		
+		return null; // Indica nenhum erro.
 	}
 
 	// Personalized toString.
