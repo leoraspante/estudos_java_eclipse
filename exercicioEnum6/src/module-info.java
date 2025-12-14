@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * 
- */
-module exercicioEnum6 {
-}
