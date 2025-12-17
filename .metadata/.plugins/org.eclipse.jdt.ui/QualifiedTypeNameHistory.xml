@@ -33,9 +33,20 @@
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="model.entities.Reservation"/>
     <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
-    <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
+    <fullyQualifiedTypeName name="model.entities.Account"/>
     <fullyQualifiedTypeName name="java.util.Locale"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="model.entities.Account"/>
+    <fullyQualifiedTypeName name="util.InputUtil"/>
     <fullyQualifiedTypeName name="util.InputUtils"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.StringUtils"/>
+    <fullyQualifiedTypeName name="Utils.StringUtils"/>
+    <fullyQualifiedTypeName name="Utils.PhoneUtils"/>
+    <fullyQualifiedTypeName name="java.time.DateTimeException"/>
+    <fullyQualifiedTypeName name="com.sun.org.apache.xml.internal.serializer.utils.Utils"/>
+    <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
+    <fullyQualifiedTypeName name="Utils.DateUtils"/>
+    <fullyQualifiedTypeName name="Utils.AddressUtils"/>
+    <fullyQualifiedTypeName name="java.lang.Character"/>
+    <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+    <fullyQualifiedTypeName name="model.entities.MenuInicial"/>
 </qualifiedTypeNameHistroy>
