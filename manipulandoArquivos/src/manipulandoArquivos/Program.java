@@ -10,6 +10,7 @@ public class Program {
 
 	public static void main(String[] args) {
 		
+		// Processo de leitura básica de um arquivo.
 		File file = new File("in.txt"); // Arquivo a ser lido.
 		
 		Scanner sc = null; // Inicialização do Scanner, que será utilizado posteriormente para a leitura do arquivo.
