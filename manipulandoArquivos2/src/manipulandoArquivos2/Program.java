@@ -1,6 +1,6 @@
 // Prática desta vez fazendo uso do bloco try-with-resources.
 
-// Bloco que declara um ou mais recursos e garante o seu fechamento automático ao final do bloco. Diponível java 7 em diante.
+// Forma correta de fazer a leitura de um arquivo.
 
 package manipulandoArquivos2;
 
@@ -14,6 +14,7 @@ public class Program {
 
 		String path = "in.txt"; // String armazenando o endereço do arquivo a ser utilizado.
 
+		// Bloco que declara um ou mais recursos e garante o seu fechamento automático ao final do bloco. Diponível java 7 em diante.
 		try (BufferedReader br = new BufferedReader(new FileReader(path))){
 
 			String line = br.readLine(); // Leitura de uma linha do arquivo, e retornar nulo caso esta no final.
@@ -24,7 +25,6 @@ public class Program {
 			}
 		}
 
-		// Bloco catch capturando possível excessão.
 		catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
 		}

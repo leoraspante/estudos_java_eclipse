@@ -17,11 +17,9 @@ public class Program {
 
 	public static void main(String[] args) {
 		
-		// Exemplo onde será gravado os arquivos deste vetor em um novo documento.
-		String[] lines = new String[] {"Good morning", "Good afternoon", "Good night"};
+		String[] lines = new String[] {"Good morning", "Good afternoon", "Good night"}; // Exemplo onde será gravado os arquivos deste vetor em um novo documento.
 		
-		// Definição do caminho onde o arquivo será criado.
-		String path = "out.txt";
+		String path = "out.txt"; // Definição do caminho onde o arquivo será criado.
 		
 		// Bloco responsável pela criação e gravação das String no arquivo out.txt.
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))){ //try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) - Não apaga os dados existentes.		

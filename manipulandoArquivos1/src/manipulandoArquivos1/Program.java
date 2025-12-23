@@ -51,3 +51,36 @@ public class Program {
 	}
 
 }
+
+
+
+// Mesmo código aplicado de forma mais limpa.
+
+/* package manipulandoArquivos1;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Program {
+
+    public static void main(String[] args) {
+        
+        String path = "in.txt";
+
+        // Try-with-resources: fr e br serão fechados automaticamente
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            
+            String line = br.readLine();
+            
+            while (line != null) {
+                System.out.println(line);
+                line = br.readLine();
+            }
+            
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+ */
