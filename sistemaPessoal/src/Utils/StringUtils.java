@@ -18,8 +18,7 @@ public final class StringUtils {
 			} 
 			
 			else if (!value.matches("[A-Za-zÀ-ÿ ]+")) { // Não aceita caractere especial ou números.
-				System.out
-						.printf("%nDigite apenas letras (sem números ou caracteres especiais).%nTente novamente.%n%n");
+				System.out.printf("%nDigite apenas letras (sem números ou caracteres especiais).%nTente novamente.%n%n");
 			}
 			
 			else {
